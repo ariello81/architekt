@@ -1,0 +1,3 @@
+nazwa_domu%ulica%liczba_domownikow%liczba_pokoi
+nazwa_pokoju%kolor pokoju%wysokość pokoju%powierzchnia pokoju w m2%ilosc elementow w pokoju
+nazwa_elementu%pozycja_x%pozycja_y%pozycja_z%dlugość elementu%szerokość elementu%wysokość elementu%waga
