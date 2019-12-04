@@ -11,7 +11,6 @@ import java.util.List;
 
 public class HomeLoaderImpl implements HomeLoader {
 
-    public static final int FILE_ROWS_NO = 3;
     public static final String SEPARATOR = "%";
 
     HomeFactory homeFactory = new HomeFactoryImpl();
@@ -28,10 +27,9 @@ public class HomeLoaderImpl implements HomeLoader {
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
             String line;
-            for (int i=0; i<FILE_ROWS_NO; i++){
-                if ((line = reader.readLine()) != null ){
-                    lines.add(line);
-                }
+            while ((line = reader.readLine()) != null ){
+                System.out.println(line);
+                lines.add(line);
             }
         }
         catch (FileNotFoundException e) {

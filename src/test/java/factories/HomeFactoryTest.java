@@ -17,10 +17,10 @@ public class HomeFactoryTest {
         //given
         final List<String> homeStr = Arrays.asList(
                 "Dom na zielonym wzgórzu%Ulica zielona 33/24%3%2",
-                "Pokoj mamy%#00ff00%10.5%25%2",
+                "Pokoj mamy%#00ff00%25%10.5%2",
                 "Biurko%10%3.5%0.0%2%1.5%0.7%30.3",
                 "Lampka%10%35%0.7%0.1%0.1%0.1%0.5",
-                "Pokoj taty%#ffffff%10.5%23%1",
+                "Pokoj taty%#ffffff%23%10.5%1",
                 "Lampka%10%35%0.7%0.1%0.1%0.1%0.5"
         );
         final String separator = "%";

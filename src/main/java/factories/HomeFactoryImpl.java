@@ -14,19 +14,26 @@ public class HomeFactoryImpl implements HomeFactory {
 
     @Override
     public Home createHome(List<String> lines, String separator) {
-        String[] splitHomeLine = lines.get(0).split(separator);
+        int indexLine = 0;
+        String homeLine = lines.get(indexLine);
+        String[] splitHomeLine = homeLine.split(separator);
         Map<HomeProperty, String> homeDetails = new EnumMap<>(HomeProperty.class);
         for (int i=0; i<splitHomeLine.length; i++) {
             homeDetails.put(HomeProperty.values()[i], splitHomeLine[i]);
         }
+        indexLine++;
+
+        int roomsCount = Integer.valueOf(homeDetails.get(HomeProperty.ROOMS_COUNT));
 
         List<Room> rooms = new ArrayList<>();
-        for (int i=0; i < Integer.valueOf(homeDetails.get(HomeProperty.ROOMS_COUNT)); i++){
-            Room room = roomFactory.createRoom(lines, separator);
+        for (int i=0; i < roomsCount; i++){
+            List<String> roomDetailsList = new ArrayList<>(lines.subList(indexLine, lines.size()));
+            Room room = roomFactory.createRoom(roomDetailsList, separator);
+            int roomElementsCount = room.getElements().size();
+            indexLine += roomElementsCount + 1;
             rooms.add(room);
         }
 
-        Home home = new Home(homeDetails.get(HomeProperty.HOME_NAME), homeDetails.get(HomeProperty.ADDRESS), Integer.valueOf(homeDetails.get(HomeProperty.HOMEMADE_COUNT)), rooms);
-        return home;
+        return new Home(homeDetails.get(HomeProperty.HOME_NAME), homeDetails.get(HomeProperty.ADDRESS), Integer.valueOf(homeDetails.get(HomeProperty.HOMEMADE_COUNT)), rooms);
     }
 }
